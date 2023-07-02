@@ -1,14 +1,15 @@
-# enable completion
-autoload -Uz compinit
+# enable completion and prompt
+autoload -Uz compinit promptinit
 compinit
+promptinit
+
+# set prompt
+prompt redhat
 
 # set history
 HISTFILE="$HOME/.zsh_history"
 HISTSIZE=1000
 SAVEHIST=1000
-
-# set prompt
-PROMPT='[%n@%m %.]%(!.#.$) '
 
 # enable colored output for ls
 alias ls='ls --color=auto --group-directories-first'
