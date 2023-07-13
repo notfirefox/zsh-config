@@ -15,7 +15,8 @@ SAVEHIST=1000
 alias ls='ls --color=auto --group-directories-first'
 
 # fix for zsh-syntax-highlighting
-ZVM_INIT_MODE='sourcing'
+# edit: does not seem to be necessary anymore
+#ZVM_INIT_MODE='sourcing'
 
 # allow case insensitive completion
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
@@ -24,6 +25,6 @@ zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 alias zsh-update="git -C ${0:a:h} submodule update --remote --merge"
 
 # source zsh plugins
-source "${0:a:h}/zsh-vi-mode/zsh-vi-mode.plugin.zsh"
-source "${0:a:h}/zsh-autosuggestions/zsh-autosuggestions.zsh"
-source "${0:a:h}/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
+source "/usr/share/zsh/plugins/zsh-vi-mode/zsh-vi-mode.zsh"
+source "/usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh"
+source "/usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
