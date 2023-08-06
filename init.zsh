@@ -23,3 +23,8 @@ PLUGINS="/usr/share/zsh/plugins"
 source "$PLUGINS/zsh-vi-mode/zsh-vi-mode.zsh"
 source "$PLUGINS/zsh-autosuggestions/zsh-autosuggestions.zsh"
 source "$PLUGINS/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
+
+# accept auto suggestion using ctrl space
+function zvm_after_init() {
+  zvm_bindkey viins '^ ' autosuggest-accept
+}
