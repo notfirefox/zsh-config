@@ -27,6 +27,10 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
 
+      # Clone submodules
+      - name: Clone submodules
+        run: git submodule update --init --recursive
+
       # Update zsh plugins
       - name: Update zsh plugins
         run: git submodule update --remote --merge
