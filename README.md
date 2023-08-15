@@ -2,7 +2,7 @@
 My Zsh config
 
 ## Installation
-Clone the `zsh-config` into your config folder.
+Clone the repository into your config folder.
 ```sh
 git clone --recurse-submodules https://github.com/notfirefox/zsh-config.git $HOME/.config/zsh
 ```
