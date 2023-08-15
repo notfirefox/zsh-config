@@ -4,7 +4,9 @@ compinit
 promptinit
 
 # set prompt
-prompt redhat
+# this currently breaks print without newline
+# e.g. cat /sys/kernel/security/lsm
+#prompt redhat
 
 # set history
 HISTFILE="$HOME/.zsh_history"
