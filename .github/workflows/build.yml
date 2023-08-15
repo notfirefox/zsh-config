@@ -1,0 +1,40 @@
+# This is a basic workflow to help you get started with Actions
+
+name: Update Plugins
+
+# Controls when the workflow will run
+on:
+  # Triggers the workflow daily at 00:00
+  schedule:
+    - cron: '0 0 * * 0'
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# Set the permissions of this workflow
+permissions:
+  contents: write
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  build:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v3
+
+      # Update zsh plugins
+      - name: Set up Go
+        run: git submodule update --remote --merge
+
+      # Push the latest changes to the main branch
+      - name: Push changes to main branch
+        run: |
+          git config --global user.name "notfirefox"
+          git config --global user.email "138280734+notfirefox@users.noreply.github.com"
+          git diff-index --quiet --cached HEAD || git commit -a -m "Update plugins"
+          git push
