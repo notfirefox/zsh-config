@@ -2,7 +2,12 @@
 My Zsh config
 
 ## Installation
-Clone the repository into your config folder.
+Clone `zsh-vi-mode` into `~/.local/share/`.
+```sh
+git clone https://github.com/jeffreytse/zsh-vi-mode.git $HOME/.local/share/zsh-vi-mode
+```
+
+Clone the `zsh-config` into your config folder.
 ```sh
 git clone https://github.com/notfirefox/zsh-config.git $HOME/.config/zsh
 ```
