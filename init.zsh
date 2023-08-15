@@ -18,9 +18,9 @@ alias ls='ls --color=auto --group-directories-first'
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 
 # source zsh plugins
-source "$HOME/.local/share/zsh-vi-mode/zsh-vi-mode.zsh"
-source "/usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh"
-source "/usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
+source "${0:a:h}/zsh-vi-mode/zsh-vi-mode.plugin.zsh"
+source "${0:a:h}/zsh-autosuggestions/zsh-autosuggestions.zsh"
+source "${0:a:h}/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
 
 # accept auto suggestion using ctrl space
 function zvm_after_init() {
