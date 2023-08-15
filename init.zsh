@@ -1,12 +1,9 @@
 # enable completion and prompt
-autoload -Uz compinit promptinit
+autoload -Uz compinit
 compinit
-promptinit
 
 # set prompt
-# this currently breaks print without newline
-# e.g. cat /sys/kernel/security/lsm
-#prompt redhat
+PROMPT='[%n@%m %.]%(!.#.$) '
 
 # set history
 HISTFILE="$HOME/.zsh_history"
