@@ -24,7 +24,7 @@ zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 bindkey '^ ' autosuggest-accept
 
 # source zsh plugins
-PLUGINS="/usr/share/"
+PLUGINS="/usr/share"
 #source "$PLUGINS/zsh-vi-mode/zsh-vi-mode.zsh"
 source "$PLUGINS/zsh-autosuggestions/zsh-autosuggestions.zsh"
 source "$PLUGINS/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
