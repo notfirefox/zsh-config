@@ -10,6 +10,13 @@ HISTFILE="$HOME/.zsh_history"
 HISTSIZE=1000
 SAVEHIST=1000
 
+# user specific environment
+if ! [[ "$PATH" =~ "$HOME/.local/bin:$HOME/bin:" ]]
+then
+    PATH="$HOME/.local/bin:$HOME/bin:$PATH"
+fi
+export PATH
+
 # enable colored output for grep and ls
 alias grep='grep --color=auto'
 alias ls='ls --color=auto --group-directories-first'
