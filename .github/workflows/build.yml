@@ -4,7 +4,7 @@ name: Update Plugins
 
 # Controls when the workflow will run
 on:
-  # Triggers the workflow daily at 00:00
+  # Triggers the workflow on sundays at 00:00
   schedule:
     - cron: '0 0 * * 0'
 
