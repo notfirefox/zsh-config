@@ -16,7 +16,6 @@ then
     PATH="$HOME/.local/bin:$HOME/bin:$PATH"
 fi
 export PATH
-export PATH="$PATH:$(go env GOBIN):$(go env GOPATH)/bin"
 
 # inject environment variables into restic
 alias restic='env \
