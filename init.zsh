@@ -17,12 +17,6 @@ then
 fi
 export PATH
 
-# inject environment variables into restic
-alias restic='env \
-  RESTIC_REPOSITORY=$(secret-tool lookup password RESTIC_REPOSITORY)\
-  RESTIC_PASSWORD=$(secret-tool lookup password RESTIC_PASSWORD)\
-  restic'
-
 # enable colored output for grep and ls
 alias grep='grep --color=auto'
 alias ls='ls --color=auto --group-directories-first'
