@@ -17,6 +17,9 @@ then
 fi
 export PATH
 
+# set editor variable
+export EDITOR="vi"
+
 # enable colored output for grep and ls
 alias grep='grep --color=auto'
 alias ls='ls --color=auto --group-directories-first'
