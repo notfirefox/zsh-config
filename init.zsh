@@ -13,7 +13,7 @@ SAVEHIST=1000
 # user specific environment
 if ! [[ "$PATH" =~ "$HOME/.local/bin:$HOME/bin:" ]]
 then
-	PATH="$HOME/.local/bin:$HOME/bin:$PATH"
+    PATH="$HOME/.local/bin:$HOME/bin:$PATH"
 fi
 export PATH
 
@@ -34,5 +34,5 @@ source "${0:a:h}/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
 
 # accept auto suggestion using ctrl space
 function zvm_after_init() {
-	zvm_bindkey viins '^ ' autosuggest-accept
+    zvm_bindkey viins '^ ' autosuggest-accept
 }
