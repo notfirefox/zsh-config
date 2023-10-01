@@ -18,7 +18,7 @@ permissions:
 # A workflow run is made up of one or more jobs
 # that can run sequentially or in parallel
 jobs:
-  # This workflow contains a single job called "build"
+  # This workflow contains a single job called "update"
   build:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
@@ -43,5 +43,5 @@ jobs:
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git diff --exit-code --quiet || git commit -am "Update filter"
+          git diff --exit-code --quiet || git commit -am "Update plugins"
           git push
