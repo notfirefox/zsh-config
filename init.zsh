@@ -20,10 +20,8 @@ export PATH
 # set editor variable
 export EDITOR="vi"
 
-# enter toolbox alias
-# NOTE: this is not ideal yet, we are looking for better ways
+# enter toolbox command
 alias dev='toolbox enter'
-alias nvim='toolbox run nvim'
 
 # file permissions command
 function fp() {
