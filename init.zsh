@@ -25,15 +25,6 @@ export EDITOR="vi"
 # enter toolbox command
 alias dev='exec toolbox enter'
 
-# file permissions command
-function fp() {
-    if [ $# -eq 0 ]; then
-        stat -c '%a - %n' *
-    else
-        stat -c '%a - %n' "$@"
-    fi
-}
-
 # enable colored output for grep and ls
 alias grep='grep --color=auto'
 alias ls='ls --color=auto --group-directories-first'
