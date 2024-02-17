@@ -23,15 +23,12 @@ export PATH
 export EDITOR="vi"
 
 # enter toolbox command
-alias dev='exec toolbox enter'
-
-# file permissions command
-function fp() {
-    if [ $# -eq 0 ]; then
-        stat -c '%a - %n' *
-    else
-        stat -c '%a - %n' "$@"
+function dev() {
+    if [ -f "/run/.toolboxenv" ]
+    then
+        return
     fi
+    exec toolbox enter
 }
 
 # enable colored output for grep and ls
