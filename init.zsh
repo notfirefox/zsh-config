@@ -22,7 +22,7 @@ export PATH
 # set editor variable
 export EDITOR="vi"
 
-# enter toolbox command
+# dev container command
 function dev() {
     if [ -f "/run/.toolboxenv" ]
     then
