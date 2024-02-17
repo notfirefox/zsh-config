@@ -21,7 +21,7 @@ export PATH
 export EDITOR="vi"
 
 # enter toolbox command
-alias dev='toolbox enter'
+alias dev='exec toolbox enter'
 
 # file permissions command
 function fp() {
