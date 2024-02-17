@@ -1,9 +1,11 @@
 # enable completion and prompt
-autoload -Uz compinit
+autoload -Uz compinit promptinit
 compinit
+promptinit
 
 # set prompt
-PROMPT='[%n@%m %.]%(!.#.$) '
+prompt redhat
+setopt prompt_sp
 
 # set history
 HISTFILE="$HOME/.zsh_history"
