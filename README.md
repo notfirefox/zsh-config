@@ -7,7 +7,9 @@ Clone the repository into your config folder.
 git clone "https://github.com/notfirefox/zsh-config.git" "$HOME/.config/zsh"
 ```
 
-Now you just need to set the `$ZDOTDIR`.
+Now all that it is left is to set `ZDOTDIR`.
 ```sh
 echo 'export ZDOTDIR="$HOME/.config/zsh"' > "$HOME/.zprofile"
 ```
+
+The config will be ready the next time you log into your system.
