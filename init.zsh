@@ -23,7 +23,7 @@ export PATH
 export EDITOR="vi"
 
 # dev container command
-function dev() {
+dev() {
     if [ -f "/run/.toolboxenv" ]
     then
         return
@@ -38,12 +38,39 @@ alias ls='ls --color=auto --group-directories-first'
 # allow case insensitive completion
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 
-# source zsh plugins
-source "${0:a:h}/zsh-vi-mode/zsh-vi-mode.plugin.zsh"
-source "${0:a:h}/zsh-autosuggestions/zsh-autosuggestions.zsh"
-source "${0:a:h}/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
+# load plugin function
+load_plugins() {
+  local repo plugdir initfile initfiles=()
+  : ${ZPLUGINDIR:=${ZDOTDIR:-~/.config/zsh}/plugins}
+  for repo in $@; do
+    plugdir=$ZPLUGINDIR/${repo:t}
+    initfile=$plugdir/${repo:t}.plugin.zsh
+    if [[ ! -d $plugdir ]]; then
+      echo "Cloning $repo..."
+      git clone -q --depth 1 --recursive --shallow-submodules \
+        "https://github.com/$repo" $plugdir
+    fi
+    if [[ ! -e $initfile ]]; then
+      initfiles=($plugdir/*.{plugin.zsh,zsh-theme,zsh,sh}(N))
+      (( $#initfiles )) || { echo >&2 "No init file '$repo'." && continue }
+      ln -sf $initfiles[1] $initfile
+    fi
+    fpath+=$plugdir
+    (( $+functions[zsh-defer] )) && zsh-defer . $initfile || . $initfile
+  done
+}
+
+# plugins
+plugins=(
+    jeffreytse/zsh-vi-mode
+    zsh-users/zsh-autosuggestions
+    zsh-users/zsh-syntax-highlighting
+)
+
+# load plugins
+load_plugins $plugins
 
 # accept auto suggestion using ctrl space
-function zvm_after_init() {
+zvm_after_init() {
     zvm_bindkey viins '^ ' autosuggest-accept
 }
