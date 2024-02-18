@@ -7,7 +7,7 @@ Clone the repository into your config folder.
 git clone "https://github.com/notfirefox/zsh-config.git" "$HOME/.config/zsh"
 ```
 
-Now you just need to source the `init.zsh` file from your `.zshrc` file.
+Now you just need to set the `$ZDOTDIR`.
 ```sh
-echo 'source "$HOME/.config/zsh/init.zsh"' > "$HOME/.zshrc"
+echo 'export ZDOTDIR="$HOME/.config/zsh"' > "$HOME/.zprofile"
 ```

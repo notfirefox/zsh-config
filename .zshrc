@@ -12,13 +12,6 @@ HISTFILE="$HOME/.zsh_history"
 HISTSIZE=1000
 SAVEHIST=1000
 
-# configure path
-typeset -U path
-path+=("$HOME/.local/bin")
-
-# set editor variable
-export EDITOR="vi"
-
 # dev container command
 dev() {
     if [ -f "/run/.toolboxenv" ]
