@@ -13,13 +13,7 @@ HISTSIZE=1000
 SAVEHIST=1000
 
 # dev container command
-dev() {
-    if [ -f "/run/.toolboxenv" ]
-    then
-        return
-    fi
-    exec toolbox enter
-}
+alias dev='[ -f "/run/.toolboxenv" ] || exec toolbox enter'
 
 # enable colored output for grep and ls
 alias grep='grep --color=auto'
