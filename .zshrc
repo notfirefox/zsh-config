@@ -14,7 +14,7 @@ SAVEHIST=1000
 
 # dev container command
 # alias dev='[ -f "/run/.toolboxenv" ] || exec toolbox enter'
-alias dev='exec distrobox enter "fedora"'
+alias dev='[ -x "$(command -v distrobox)" ] && exec distrobox enter "fedora"'
 
 # enable colored output for grep and ls
 alias grep='grep --color=auto'
