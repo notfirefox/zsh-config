@@ -1,15 +1,17 @@
 # Zsh Config
 Minimal Zsh Config
 
-## Installation
-Clone the repository into your config folder.
+## :clipboard: Requirements 
+- Zsh
+- Linux or macOS
+
+## :package: Installation
+Clone the repository into the config directory.
 ```sh
-git clone "https://github.com/notfirefox/zsh-config.git" "$HOME/.config/zsh"
+git clone "https://github.com/notfirefox/zsh-config.git" ~/.config/zsh
 ```
 
-Now all that it is left is to set `ZDOTDIR`.
+Set the `ZDOTDIR` environment variable.
 ```sh
-echo 'export ZDOTDIR="$HOME/.config/zsh"' > "$HOME/.zprofile"
+echo 'export ZDOTDIR="$HOME/.config/zsh" && . "$ZDOTDIR/.zshenv"' > ~/.zshenv
 ```
-
-The config will be ready the next time you log into your system.
