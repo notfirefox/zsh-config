@@ -17,3 +17,8 @@ SAVEHIST=1000
 
 # set wordchars
 WORDCHARS=''
+
+# set options
+setopt no_auto_menu
+setopt bash_auto_list
+setopt no_always_last_prompt
