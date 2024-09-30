@@ -21,6 +21,7 @@ WORDCHARS=''
 # set options
 setopt no_auto_menu
 setopt bash_auto_list
+setopt no_auto_remove_slash
 setopt no_always_last_prompt
 
 bindterm() {
