@@ -19,6 +19,7 @@ SAVEHIST=1000
 WORDCHARS=''
 
 # set options
+setopt sh_nullcmd
 setopt no_auto_menu
 setopt bash_auto_list
 setopt no_auto_remove_slash
