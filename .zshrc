@@ -21,6 +21,7 @@ setopt hist_ignore_space
 WORDCHARS=''
 
 # Configure shell behaviour to be more like bash on Linux
+setopt ksh_arrays
 setopt sh_nullcmd
 setopt sh_word_split
 setopt bash_auto_list
@@ -33,7 +34,7 @@ PROMPT="%F{green}%B%n@%m%b%f:%F{blue}%B%~%b%f%(!.#.$) "
 
 # Configure the path environment variable
 typeset -U path
-path=(~/.local/bin ~/.cabal/bin ~/.ghcup/bin $path)
+path=(~/.local/bin ~/.cabal/bin ~/.ghcup/bin ${path[@]})
 
 # Set editor and visual variables
 export EDITOR=ed
