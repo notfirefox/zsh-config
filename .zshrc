@@ -1,66 +1,72 @@
-# enable completion and prompt
-autoload -Uz compinit promptinit
-compinit
-promptinit
+# Enable subcommand completion
+autoload -Uz compinit && compinit
 
-# set prompt
-prompt redhat
-setopt prompt_sp
+# Load zsh hook to set terminal title later
+autoload -Uz add-zsh-hook
 
-# set keybindings
+# Use emacs style keybindings for better compatibility
 bindkey -e
 
-# set history
-HISTFILE="$HOME/.zsh_history"
+# Enable history for `CONTROL+R` functionality
 HISTSIZE=1000
 SAVEHIST=1000
+HISTFILE="$HOME/.zsh_history"
 
-# set wordchars
+# Change history settings to be more like bash on Linux
+setopt append_history
+setopt hist_ignore_dups
+setopt hist_ignore_space
+
+# Make `ALT+B` and `ALT+F` behave like in bash
 WORDCHARS=''
 
-# set options
+# Configure shell behaviour to be more like bash on Linux
 setopt sh_nullcmd
-setopt no_auto_menu
 setopt bash_auto_list
-setopt no_auto_remove_slash
-setopt no_always_last_prompt
+unsetopt auto_menu
+unsetopt always_last_prompt
+unsetopt auto_remove_slash
 
-bindterm() {
-    local sequence widget
-    sequence="${terminfo[$1]}"
-    widget="$2"
+# Use a colorful prompt for better visibility
+PROMPT="%F{green}%B%n@%m%b%f:%F{blue}%B%~%b%f%(!.#.$) "
 
-    [[ -z "$sequence" ]] && return 1
-    bindkey -- "$sequence" "$widget"
+# Configure the path environment variable
+typeset -U path
+path=(~/.local/bin ~/.cabal/bin ~/.ghcup/bin $path)
+
+# Set editor and visual variables
+export EDITOR=ed
+export VISUAL=vi
+
+# Configure ex and vi editor
+export EXINIT="set ai nofl"
+export NEXINIT="$EXINIT filec=\	"
+
+# Enable colors for common commands such as ls and grep
+case "$OSTYPE" in
+darwin*)
+	export CLICOLOR=1
+	# Add Homebrew to path if it is installed
+	if [[ -d "/opt/homebrew" ]]; then
+		eval "$(/opt/homebrew/bin/brew shellenv)"
+	fi
+	;;
+linux*)
+	if [[ -x /usr/bin/dircolors ]]; then
+		eval "$(dircolors -b)"
+	fi
+	alias diff='diff --color=auto'
+	alias grep='grep --color=auto'
+	alias ls='ls --color=auto'
+	;;
+esac
+
+# Add xterm title precmd
+function xterm_title_precmd() {
+	print -Pn -- '\e]2;%n@%m: %~\a'
 }
 
-# bind keys using terminfo
-bindterm kbs   backward-delete-char
-bindterm khome beginning-of-line
-bindterm kend  end-of-line
-bindterm kich1 overwrite-mode
-bindterm kdch1 delete-char
-bindterm kcuu1 up-line-or-history
-bindterm kcud1 down-line-or-history
-bindterm kcub1 backward-char
-bindterm kcuf1 forward-char
-bindterm kpp   beginning-of-buffer-or-history
-bindterm knp   end-of-buffer-or-history
-
-# make sure the terminal is in application mode, when zle is
-# active. only then are the values from $terminfo valid.
-if (( ${+terminfo[smkx]} )) && (( ${+terminfo[rmkx]} )); then
-    zle-line-init() {
-        emulate -L zsh
-        printf '%s' ${terminfo[smkx]}
-    }
-    zle-line-finish() {
-        emulate -L zsh
-        printf '%s' ${terminfo[rmkx]}
-    }
-    zle -N zle-line-init
-    zle -N zle-line-finish
+# Install zsh hook to set the terminal title
+if [[ "$TERM" == rxvt* || "$TERM" == xterm* ]]; then
+	add-zsh-hook -Uz precmd xterm_title_precmd
 fi
-
-# unfunction bindterm
-unfunction bindterm

@@ -6,12 +6,7 @@ Minimal Zsh Config
 - Linux or macOS
 
 ## :package: Installation
-Clone the repository into the config directory.
+Download the config file to `~/.zshrc`.
 ```sh
-git clone "https://github.com/notfirefox/zsh-config.git" ~/.config/zsh
-```
-
-Set the `ZDOTDIR` environment variable.
-```sh
-echo 'export ZDOTDIR="$HOME/.config/zsh" && . "$ZDOTDIR/.zshenv"' > ~/.zshenv
+curl -o ~/.zshrc "https://raw.githubusercontent.com/notfirefox/zsh-config/main/.zshrc"
 ```
