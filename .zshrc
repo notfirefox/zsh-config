@@ -22,6 +22,7 @@ WORDCHARS=''
 
 # Configure shell behaviour to be more like bash on Linux
 setopt sh_nullcmd
+setopt sh_word_split
 setopt bash_auto_list
 unsetopt auto_menu
 unsetopt always_last_prompt
