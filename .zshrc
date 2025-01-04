@@ -30,7 +30,9 @@ setopt ksh_arrays
 setopt sh_nullcmd
 setopt sh_word_split
 setopt bash_auto_list
+unsetopt nomatch
 unsetopt auto_menu
+unsetopt bad_pattern
 unsetopt bare_glob_qual
 unsetopt always_last_prompt
 unsetopt auto_remove_slash
