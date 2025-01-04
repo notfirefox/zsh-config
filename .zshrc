@@ -67,7 +67,7 @@ linux*)
 esac
 
 # Add xterm title precmd
-function xterm_title_precmd() {
+function xterm_title_precmd {
 	print -Pn -- '\e]2;%n@%m: %~\a'
 }
 
