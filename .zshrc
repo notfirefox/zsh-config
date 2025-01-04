@@ -66,6 +66,16 @@ linux*)
 	;;
 esac
 
+# Add command not found handler for Debian-based systems
+function command_not_found_handler {
+	if [[ -x /usr/lib/command-not-found ]]; then
+		/usr/lib/command-not-found -- "$1"
+		return $?
+	fi
+	printf "%s: command not found\n" "$1" >&2
+	return 127
+}
+
 # Add xterm title precmd
 function xterm_title_precmd {
 	print -Pn -- '\e]2;%n@%m: %~\a'
