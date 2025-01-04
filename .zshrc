@@ -20,6 +20,9 @@ setopt hist_ignore_space
 # Make `ALT+B` and `ALT+F` behave like in bash
 WORDCHARS=''
 
+# Do not automatically remove suffix chars
+ZLE_REMOVE_SUFFIX_CHARS=''
+
 # Configure shell behaviour to be more like bash on Linux
 setopt ksh_arrays
 setopt sh_nullcmd
