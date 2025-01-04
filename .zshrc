@@ -42,7 +42,7 @@ PROMPT="%F{green}%B%n@%m%b%f:%F{blue}%B%~%b%f%(!.#.$) "
 
 # Configure the path environment variable
 typeset -U path
-path=(~/.local/bin ~/.cabal/bin ~/.ghcup/bin ${path[@]})
+path=(~/.local/bin ~/.cabal/bin ~/.ghcup/bin "${path[@]}")
 
 # Set editor and visual variables
 export EDITOR=ed
