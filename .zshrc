@@ -24,11 +24,14 @@ WORDCHARS=''
 ZLE_REMOVE_SUFFIX_CHARS=''
 
 # Configure shell behaviour to be more like bash on Linux
+setopt sh_glob
+setopt ksh_glob
 setopt ksh_arrays
 setopt sh_nullcmd
 setopt sh_word_split
 setopt bash_auto_list
 unsetopt auto_menu
+unsetopt bare_glob_qual
 unsetopt always_last_prompt
 unsetopt auto_remove_slash
 
@@ -82,6 +85,6 @@ function xterm_title_precmd {
 }
 
 # Install zsh hook to set the terminal title
-if [[ "$TERM" == rxvt* || "$TERM" == xterm* ]]; then
+if [[ "$TERM" == @(rxvt*|xterm*) ]]; then
 	add-zsh-hook -Uz precmd xterm_title_precmd
 fi
