@@ -26,6 +26,7 @@ ZLE_REMOVE_SUFFIX_CHARS=''
 # Configure shell behaviour to be more like bash on Linux
 setopt sh_glob
 setopt ksh_glob
+setopt glob_subst
 setopt ksh_arrays
 setopt sh_nullcmd
 setopt sh_word_split
