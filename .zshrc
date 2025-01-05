@@ -39,6 +39,14 @@ unsetopt bare_glob_qual
 unsetopt always_last_prompt
 unsetopt auto_remove_slash
 
+# Create custom unix line discard function
+function unix_line_discard {
+	[[ $CURSOR -eq 0 ]] && printf '\a'
+	zle backward-kill-line
+}
+zle -N unix_line_discard
+bindkey '^U' unix_line_discard
+
 # Use a colorful prompt for better visibility
 PROMPT="%F{green}%B%n@%m%b%f:%F{blue}%B%~%b%f%(!.#.$) "
 
