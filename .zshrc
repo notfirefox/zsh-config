@@ -41,7 +41,9 @@ unsetopt auto_remove_slash
 
 # Create custom unix line discard function
 function unix_line_discard {
-	[[ $CURSOR -eq 0 ]] && printf '\a'
+	if [[ $CURSOR -eq 0 ]]; then
+		printf '\a' # beep
+	fi
 	zle backward-kill-line
 }
 zle -N unix_line_discard
