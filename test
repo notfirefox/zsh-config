@@ -42,3 +42,8 @@
 	rm tmp/file{1,2} && rmdir tmp
 	[ "$result" == "tmp/(file1|file2)" ]
 }
+
+@test "sh_word_split" {
+	result=$(zsh -ic 'x="foo bar"; set -- $x; echo $1')
+	[ "$result" == "foo" ]
+}
