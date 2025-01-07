@@ -32,6 +32,7 @@ setopt sh_nullcmd
 setopt interactive_comments
 setopt sh_word_split
 setopt bash_auto_list
+unsetopt equals
 unsetopt nomatch
 unsetopt auto_menu
 unsetopt bad_pattern

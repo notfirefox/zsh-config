@@ -31,6 +31,11 @@
 	[ "$result" == "*(.)" ]
 }
 
+@test "no_equals" {
+	result=$(zsh -ic 'echo =cc')
+	[ "$result" == "=cc" ]
+}
+
 @test "no_nomatch" {
 	result="$(zsh -ic 'print nosuchfile*')"
 	[ "$result" == "nosuchfile*" ]
