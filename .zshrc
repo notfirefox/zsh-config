@@ -29,6 +29,7 @@ setopt ksh_glob
 setopt glob_subst
 setopt ksh_arrays
 setopt sh_nullcmd
+setopt sh_file_expansion
 setopt interactive_comments
 setopt sh_word_split
 setopt bash_auto_list

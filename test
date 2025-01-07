@@ -41,6 +41,12 @@
 	[ "$result" == "nosuchfile*" ]
 }
 
+@test "sh_file_expansion" {
+	result=$(zsh -ic 'foo="~/.zshrc"; print $foo')
+	# shellcheck disable=SC2088
+	[ "$result" == "~/.zshrc" ]
+}
+
 @test "sh_glob" {
 	mkdir tmp && touch tmp/file{1,2}
 	result=$(zsh -ic 'echo tmp/(file1|file2)')
