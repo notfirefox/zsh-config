@@ -34,13 +34,13 @@ setopt interactive_comments
 setopt sh_word_split
 setopt bash_auto_list
 setopt no_function_argzero
-unsetopt equals
-unsetopt nomatch
-unsetopt auto_menu
-unsetopt bad_pattern
-unsetopt bare_glob_qual
-unsetopt always_last_prompt
-unsetopt auto_remove_slash
+setopt no_equals
+setopt no_nomatch
+setopt no_auto_menu
+setopt no_bad_pattern
+setopt no_bare_glob_qual
+setopt no_always_last_prompt
+setopt no_auto_remove_slash
 
 # Create custom unix line discard function
 function unix_line_discard {
