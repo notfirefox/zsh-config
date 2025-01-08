@@ -33,6 +33,7 @@ setopt sh_file_expansion
 setopt interactive_comments
 setopt sh_word_split
 setopt bash_auto_list
+setopt no_function_argzero
 unsetopt equals
 unsetopt nomatch
 unsetopt auto_menu
