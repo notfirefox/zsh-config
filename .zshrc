@@ -24,23 +24,23 @@ WORDCHARS=''
 ZLE_REMOVE_SUFFIX_CHARS=''
 
 # Configure shell behaviour to be more like bash on Linux
-setopt sh_glob
-setopt ksh_glob
-setopt glob_subst
-setopt ksh_arrays
-setopt sh_nullcmd
-setopt sh_file_expansion
-setopt interactive_comments
-setopt sh_word_split
 setopt bash_auto_list
-setopt no_function_argzero
-setopt no_equals
-setopt no_nomatch
+setopt glob_subst
+setopt interactive_comments
+setopt ksh_arrays
+setopt ksh_glob
+setopt no_always_last_prompt
 setopt no_auto_menu
+setopt no_auto_remove_slash
 setopt no_bad_pattern
 setopt no_bare_glob_qual
-setopt no_always_last_prompt
-setopt no_auto_remove_slash
+setopt no_equals
+setopt no_function_argzero
+setopt no_nomatch
+setopt sh_file_expansion
+setopt sh_glob
+setopt sh_nullcmd
+setopt sh_word_split
 
 # Create custom unix line discard function
 function unix_line_discard {
