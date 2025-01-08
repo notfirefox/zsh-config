@@ -1,9 +1,6 @@
 # Enable subcommand completion
 autoload -Uz compinit && compinit
 
-# Load zsh hook to set terminal title later
-autoload -Uz add-zsh-hook
-
 # Use emacs style keybindings for better compatibility
 bindkey -e
 
@@ -12,20 +9,21 @@ HISTSIZE=1000
 SAVEHIST=1000
 HISTFILE="$HOME/.zsh_history"
 
-# Change history settings to be more like bash on Linux
-setopt append_history
-setopt hist_ignore_dups
-setopt hist_ignore_space
-
-# Make `ALT+B` and `ALT+F` behave like in bash
+# Change word chars to be more like GNU readline
 WORDCHARS=''
 
 # Do not automatically remove suffix chars
 ZLE_REMOVE_SUFFIX_CHARS=''
 
-# Configure shell behaviour to be more like bash on Linux
+# Use a colorful prompt for better visibility
+PROMPT="%F{green}%B%n@%m%b%f:%F{blue}%B%~%b%f%(!.#.$) "
+
+# Configure shell behaviour to be more like bash/ksh
+setopt append_history
 setopt bash_auto_list
 setopt glob_subst
+setopt hist_ignore_dups
+setopt hist_ignore_space
 setopt interactive_comments
 setopt ksh_arrays
 setopt ksh_glob
@@ -41,19 +39,6 @@ setopt sh_file_expansion
 setopt sh_glob
 setopt sh_nullcmd
 setopt sh_word_split
-
-# Create custom unix line discard function
-function unix_line_discard {
-	if [[ $CURSOR -eq 0 ]]; then
-		printf '\a' # beep
-	fi
-	zle backward-kill-line
-}
-zle -N unix_line_discard
-bindkey '^U' unix_line_discard
-
-# Use a colorful prompt for better visibility
-PROMPT="%F{green}%B%n@%m%b%f:%F{blue}%B%~%b%f%(!.#.$) "
 
 # Configure the path environment variable
 typeset -U path
@@ -96,6 +81,16 @@ function command_not_found_handler {
 	return 127
 }
 
+# Create custom unix line discard function
+function unix_line_discard {
+	if [[ $CURSOR -eq 0 ]]; then
+		printf '\a'
+	fi
+	zle backward-kill-line
+}
+zle -N unix_line_discard
+bindkey '^U' unix_line_discard
+
 # Add xterm title precmd
 function xterm_title_precmd {
 	print -Pn -- '\e]2;%n@%m: %~\a'
@@ -103,5 +98,6 @@ function xterm_title_precmd {
 
 # Install zsh hook to set the terminal title
 if [[ "$TERM" == @(rxvt*|xterm*) ]]; then
+	autoload -Uz add-zsh-hook
 	add-zsh-hook -Uz precmd xterm_title_precmd
 fi
