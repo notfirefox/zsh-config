@@ -49,7 +49,7 @@ export EDITOR=ed
 export VISUAL=vi
 
 # Configure ex and vi editor
-export EXINIT="set ai nofl"
+export EXINIT="set nofl"
 export NEXINIT="$EXINIT filec=\	"
 
 # Enable colors for common commands such as ls and grep
