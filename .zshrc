@@ -40,10 +40,6 @@ setopt sh_glob
 setopt sh_nullcmd
 setopt sh_word_split
 
-# Configure the path environment variable
-typeset -U path
-path=(~/.local/bin ~/.cabal/bin ~/.ghcup/bin "${path[@]}")
-
 # Set editor and visual variables
 export EDITOR=ed
 export VISUAL=vi
@@ -70,6 +66,15 @@ linux*)
 	alias ls='ls --color=auto'
 	;;
 esac
+
+# Configure the path environment variable
+typeset -U path
+path=(
+	"$HOME/.local/bin"
+	"$HOME/.cabal/bin"
+	"$HOME/.ghcup/bin"
+	"${path[@]}"
+)
 
 # Add command not found handler for Debian-based systems
 function command_not_found_handler {
