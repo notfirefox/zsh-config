@@ -53,7 +53,7 @@ case "$OSTYPE" in
 darwin*)
 	export CLICOLOR=1
 	# Add Homebrew to path if it is installed
-	if [[ -d "/opt/homebrew" ]]; then
+	if [[ -x /opt/homebrew/bin/brew ]]; then
 		eval "$(/opt/homebrew/bin/brew shellenv)"
 	fi
 	;;
