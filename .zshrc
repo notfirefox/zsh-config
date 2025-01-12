@@ -88,10 +88,10 @@ function command_not_found_handler {
 
 # Create custom unix line discard function
 function unix_line_discard {
-	if [[ $CURSOR -eq 0 ]]; then
-		printf '\a'
-	fi
-	zle backward-kill-line
+	case "$CURSOR" in
+	0) zle beep ;;
+	*) zle backward-kill-line ;;
+	esac
 }
 zle -N unix_line_discard
 bindkey '^U' unix_line_discard
