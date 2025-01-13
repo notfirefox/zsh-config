@@ -48,24 +48,20 @@ export VISUAL=vi
 export EXINIT="set nofl"
 export NEXINIT="$EXINIT filec=\	"
 
-# Enable colors for common commands such as ls and grep
-case "$OSTYPE" in
-darwin*)
-	export CLICOLOR=1
-	# Add Homebrew to path if it is installed
-	if [[ -x /opt/homebrew/bin/brew ]]; then
-		eval "$(/opt/homebrew/bin/brew shellenv)"
-	fi
-	;;
-linux*)
-	if [[ -x /usr/bin/dircolors ]]; then
-		eval "$(dircolors -b)"
-	fi
-	alias diff='diff --color=auto'
-	alias grep='grep --color=auto'
+# Add Homebrew to path if it is installed
+if [[ -x /opt/homebrew/bin/brew ]]; then
+	eval "$(/opt/homebrew/bin/brew shellenv)"
+fi
+
+# Enable colors for commands such as ls, diff and grep
+if [[ -x /usr/bin/dircolors ]]; then
+	eval "$(/usr/bin/dircolors -b)"
 	alias ls='ls --color=auto'
-	;;
-esac
+else
+	export CLICOLOR=1
+fi
+alias diff='diff --color=auto'
+alias grep='grep --color=auto'
 
 # Configure the path environment variable
 typeset -U path
