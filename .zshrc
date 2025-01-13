@@ -55,8 +55,8 @@ fi
 
 # Enable colors for commands such as ls, diff and grep
 if [[ -x /usr/bin/dircolors ]]; then
-	alias ls='ls --color=auto'
 	eval "$(/usr/bin/dircolors -b)"
+	alias ls='ls --color=auto'
 else
 	export CLICOLOR=1
 fi
