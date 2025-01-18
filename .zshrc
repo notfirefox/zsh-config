@@ -97,7 +97,7 @@ function xterm_title_precmd {
 }
 
 # Install zsh hook to set the terminal title
-if [[ "$TERM" == @(rxvt*|xterm*) ]]; then
+if [[ $TERM == @(rxvt*|xterm*) ]]; then
 	autoload -Uz add-zsh-hook
 	add-zsh-hook -Uz precmd xterm_title_precmd
 fi
