@@ -53,6 +53,13 @@ if [[ -x /opt/homebrew/bin/brew ]]; then
 	eval "$(/opt/homebrew/bin/brew shellenv)"
 fi
 
+# Configure the path environment variable
+typeset -U path
+if [[ -x $HOME/.ghcup/bin/ghcup ]]; then
+	path=("$HOME/.cabal/bin" "$HOME/.ghcup/bin" "${path[@]}")
+fi
+path=("$HOME/.local/bin" "${path[@]}")
+
 # Enable colors for commands such as ls, diff and grep
 if [[ -x /usr/bin/dircolors ]]; then
 	eval "$(/usr/bin/dircolors -b)"
@@ -63,13 +70,6 @@ elif [[ $OSTYPE == @(darwin*|freebsd*) ]]; then
 fi
 alias diff='diff --color=auto'
 alias grep='grep --color=auto'
-
-# Configure the path environment variable
-typeset -U path
-if [[ -x $HOME/.ghcup/bin/ghcup ]]; then
-	path=("$HOME/.cabal/bin" "$HOME/.ghcup/bin" "${path[@]}")
-fi
-path=("$HOME/.local/bin" "${path[@]}")
 
 # Add command not found handler for Debian-based systems
 function command_not_found_handler {
