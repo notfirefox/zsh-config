@@ -57,9 +57,9 @@ fi
 if [[ -x /usr/bin/dircolors ]]; then
 	eval "$(/usr/bin/dircolors -b)"
 	alias ls='ls --color=auto'
-else
-	export CLICOLOR=1
+elif [[ $OSTYPE == @(darwin*|freebsd*) ]]; then
 	export LSCOLORS="ExGxFxdaCxDaDahbadecac"
+	alias ls='ls -G'
 fi
 alias diff='diff --color=auto'
 alias grep='grep --color=auto'
