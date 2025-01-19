@@ -61,7 +61,7 @@ fi
 path=("$HOME/.local/bin" "${path[@]}")
 
 # Enable colors for commands such as ls, diff and grep
-if [[ -x /usr/bin/dircolors ]]; then
+if [[ $OSTYPE == linux-gnu ]]; then
 	eval "$(/usr/bin/dircolors -b)"
 	alias ls='ls --color=auto'
 elif [[ $OSTYPE == @(darwin*|freebsd*) ]]; then
