@@ -1,0 +1,67 @@
+#!/bin/sh
+
+# shellcheck shell=sh
+# shellcheck disable=SC2016
+# shellcheck disable=SC2088
+
+# Shell script exit code
+exit_code=0
+
+run_test() {
+	command="$1"
+	expected="$2"
+	desc="$3"
+
+	result=$(zsh -ic "$command")
+
+	if [ "$result" = "$expected" ]; then
+		echo "PASS: $desc"
+	else
+		echo "FAIL: $desc (expected: '$expected', got: '$result')"
+		exit_code=1  # Mark as failed
+	fi
+}
+
+# Test: glob_subst
+mkdir tmp; touch tmp/file1; touch tmp/file2
+run_test 'foo="tmp/*"; print $foo' 'tmp/file1 tmp/file2' 'glob_subst'
+rm tmp/file1; rm tmp/file2; rmdir tmp
+
+# Test: ksh_arrays
+run_test 'arr=(foo bar); echo $arr' 'foo' 'ksh_arrays'
+
+# Test: ksh_glob
+mkdir tmp; touch tmp/file1; touch tmp/file2
+run_test 'echo tmp/@(file*)' 'tmp/file1 tmp/file2' 'ksh_glob'
+rm tmp/file1; rm tmp/file2; rmdir tmp
+
+# Test: no_bad_pattern
+run_test 'print [-' '[-' 'no_bad_pattern'
+
+# Test: no_bare_glob_qual
+mkdir tmp; touch tmp/file1; touch tmp/file2
+run_test 'cd tmp; print *(.)' '*(.)' 'no_bare_glob_qual'
+rm tmp/file1; rm tmp/file2; rmdir tmp
+
+# Test: no_function_argzero
+run_test 'function foo { echo $0; }; foo' 'zsh' 'no_function_argzero'
+
+# Test: no_equals
+run_test 'echo =cc' '=cc' 'no_equals'
+
+# Test: no_nomatch
+run_test 'print nosuchfile*' 'nosuchfile*' 'no_nomatch'
+
+# Test: sh_file_expansion
+run_test 'foo="~/.zshrc"; print $foo' '~/.zshrc' 'sh_file_expansion'
+
+# Test: sh_glob
+mkdir tmp; touch tmp/file1; touch tmp/file2
+run_test 'echo tmp/(file1|file2)' 'tmp/(file1|file2)' 'sh_glob'
+rm tmp/file1; rm tmp/file2; rmdir tmp
+
+# Test: sh_word_split
+run_test 'x="foo bar"; set -- $x; echo $1' 'foo' 'sh_word_split'
+
+# Return exit code
+return $exit_code
