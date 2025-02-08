@@ -1,5 +1,9 @@
 # Enable subcommand completion
-autoload -Uz compinit && compinit
+emulate zsh -c 'autoload -Uz compinit'
+compinit
+
+# Enable ksh emulation
+emulate -R ksh
 
 # Use emacs style keybindings for better compatibility
 bindkey -e
@@ -18,27 +22,16 @@ ZLE_REMOVE_SUFFIX_CHARS=''
 # Use a colorful prompt for better visibility
 PROMPT="%F{green}%B%n@%m%b%f:%F{blue}%B%~%b%f%(!.#.$) "
 
-# Configure shell behaviour to be more like bash/ksh
+# Configure interactive shell behaviour
 setopt append_history
 setopt bash_auto_list
-setopt glob_subst
 setopt hist_ignore_dups
 setopt hist_ignore_space
-setopt interactive_comments
-setopt ksh_arrays
-setopt ksh_glob
 setopt no_always_last_prompt
 setopt no_auto_menu
 setopt no_auto_remove_slash
-setopt no_bad_pattern
-setopt no_bare_glob_qual
-setopt no_equals
-setopt no_function_argzero
-setopt no_nomatch
-setopt sh_file_expansion
-setopt sh_glob
-setopt sh_nullcmd
-setopt sh_word_split
+setopt no_single_line_zle
+setopt prompt_percent
 
 # Set editor and visual variables
 export EDITOR=ed
