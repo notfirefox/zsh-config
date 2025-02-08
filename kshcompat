@@ -20,11 +20,11 @@ run_test() {
 	result=$(zsh -ic "$command")
 
 	if [ "$result" = "$expected" ]; then
-		printf "${bold}${green}PASS:${normal} "
-		printf "$desc\n"
+		printf "%sPASS:%s %s\n" "${bold}${green}" "${normal}" "${desc}"
 	else
-		printf "${bold}${red}FAIL:${normal} "
-		printf "$desc (expected: '$expected', got: '$result')\n"
+		printf "%sFAIL:%s %s " "${bold}${red}" "${normal}" "${desc}"
+		printf "(expected: '%s', got: '%s')\n" "${expected}" "${result}"
+
 		exit_code=1  # Mark as failed
 	fi
 }
