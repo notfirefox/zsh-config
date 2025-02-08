@@ -4,6 +4,11 @@
 # shellcheck disable=SC2016
 # shellcheck disable=SC2088
 
+bold=$(tput bold)
+red=$(tput setaf 1)
+green=$(tput setaf 2)
+normal=$(tput sgr0)
+
 # Shell script exit code
 exit_code=0
 
@@ -15,9 +20,11 @@ run_test() {
 	result=$(zsh -ic "$command")
 
 	if [ "$result" = "$expected" ]; then
-		echo "PASS: $desc"
+		printf "${bold}${green}PASS:${normal} "
+		printf "$desc\n"
 	else
-		echo "FAIL: $desc (expected: '$expected', got: '$result')"
+		printf "${bold}${red}FAIL:${normal} "
+		printf "$desc (expected: '$expected', got: '$result')\n"
 		exit_code=1  # Mark as failed
 	fi
 }
