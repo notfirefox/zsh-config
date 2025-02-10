@@ -74,6 +74,15 @@ function command_not_found_handler {
 	return 127
 }
 
+# Custom backward and forward word function
+bindkey '\eb' emacs-backward-word
+bindkey '\ef' emacs-forward-word
+
+# Custom backward kill word function
+autoload -Uz backward-kill-word-match
+zstyle ':zle:backward-kill-word' word-style space
+zle -N backward-kill-word backward-kill-word-match
+
 # Create custom unix line discard function
 function unix_line_discard {
 	case "$CURSOR" in
