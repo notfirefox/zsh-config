@@ -5,10 +5,12 @@ Minimal Zsh Config
 - Zsh
 
 ## :package: Installation
-Disable global `compinit` on Ubuntu.
-```sh
-echo 'skip_global_compinit=1' > ~/.zshenv
-```
+> On Ubuntu you need to disable the global initialization of the completion system.
+>
+> **WARNING:** This will overwrite your `~/.zshenv` file.
+> ```sh
+> echo 'skip_global_compinit=1' > ~/.zshenv
+> ```
 
 Download the config file to `~/.zshrc`.
 ```sh
