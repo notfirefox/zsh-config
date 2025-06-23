@@ -110,6 +110,12 @@ function transpose-chars {
 }
 zle -N transpose-chars
 
+# Define edit-and-execute-command function. See zshzle(1).
+autoload -Uz edit-command-line
+function edit-and-execute-command { edit-command-line && zle .accept-line; }
+zle -N edit-and-execute-command
+bindkey "^X^E" edit-and-execute-command
+
 # Define function that sets the terminal title.
 if typeset -f update_terminal_cwd >/dev/null 2>&1; then
 	function xterm_title_precmd {
