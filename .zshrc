@@ -52,7 +52,7 @@ if [[ $PATH != *"$HOME/.local/bin:"* ]]; then
 fi
 
 # Configure colors for the ls(1) command on macOS.
-export COLORTERM=${COLORTERM:-256}
+export COLORTERM=${COLORTERM:-yes}
 export LSCOLORS='ExGxFxdaCxDaDahbadecac'
 
 # Configure colors for the ls(1) command on Linux.
