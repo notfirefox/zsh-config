@@ -85,6 +85,10 @@ autoload -Uz backward-kill-word-match
 zstyle ':zle:backward-kill-word' word-style space
 zle -N backward-kill-word backward-kill-word-match
 
+# Redefine beginning of line zhszle(1) function.
+function beginning-of-line { CURSOR=0; }
+zle -N beginning-of-line
+
 # Redefine backward-kill-line function. See zshzle(1).
 function backward-kill-line {
 	((CURSOR == 0)) && return 1
