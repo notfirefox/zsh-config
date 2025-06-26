@@ -106,8 +106,10 @@ bindkey '^U' backward-kill-line
 
 # Redefine kill-line zshzle(1) function.
 function forward-kill-buffer {
+	local killed="${BUFFER:$CURSOR}"
 	BUFFER="${BUFFER:0:$CURSOR}"
 	CURSOR=${#BUFFER}
+	zle .copy-region-as-kill "$killed"
 }
 zle -N kill-line forward-kill-buffer
 
