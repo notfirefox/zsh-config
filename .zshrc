@@ -92,7 +92,8 @@ zle -N backward-kill-word backward-kill-word-match
 # Redefine backward-kill-line function. See zshzle(1).
 function backward-kill-line {
 	((CURSOR == 0)) && return 1
-	zle .backward-kill-line
+	BUFFER="${BUFFER:$CURSOR}"
+	CURSOR=0
 }
 zle -N backward-kill-line
 bindkey '^U' backward-kill-line
