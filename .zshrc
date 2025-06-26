@@ -102,6 +102,13 @@ function backward-kill-buffer {
 zle -N backward-kill-line backward-kill-buffer
 bindkey '^U' backward-kill-line
 
+# Redefine kill-line zshzle(1) function.
+function forward-kill-buffer {
+	BUFFER="${BUFFER:0:$CURSOR}"
+	CURSOR=${#BUFFER}
+}
+zle -N kill-line forward-kill-buffer
+
 # Redefine backward-delete-char zshzle(1) function.
 function backward-delete-char {
 	((CURSOR == 0)) && return 1
