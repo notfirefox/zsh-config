@@ -99,8 +99,8 @@ function backward-kill-buffer {
 	BUFFER="${BUFFER:$CURSOR}"
 	CURSOR=0
 }
-zle -N backward-kill-buffer
-bindkey '^U' backward-kill-buffer
+zle -N backward-kill-line backward-kill-buffer
+bindkey '^U' backward-kill-line
 
 # Redefine backward-delete-char zshzle(1) function.
 function backward-delete-char {
