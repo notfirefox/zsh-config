@@ -89,6 +89,10 @@ zle -N backward-kill-word backward-kill-word-match
 function beginning-of-line { CURSOR=0; }
 zle -N beginning-of-line
 
+# Redefine end of line zhszle(1) function.
+function end-of-line { CURSOR=${#BUFFER}; }
+zle -N end-of-line
+
 # Redefine backward-kill-line function. See zshzle(1).
 function backward-kill-line {
 	((CURSOR == 0)) && return 1
