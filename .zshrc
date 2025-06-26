@@ -76,24 +76,24 @@ command ls --color=auto / >/dev/null 2>&1 &&
 [[ -r /etc/zsh_command_not_found ]] &&
 	. /etc/zsh_command_not_found
 
-# Redefine backward and forward word zshzle(1) functions.
+# Redefine backward-word and forward-word zshzle(1) functions.
 zle -A emacs-forward-word forward-word
 zle -A emacs-backward-word backward-word
 
-# Redefine backward-kill-word function. See zshzle(1).
+# Redefine backward-kill-word zshzle(1) function.
 autoload -Uz backward-kill-word-match
 zstyle ':zle:backward-kill-word' word-style space
 zle -N backward-kill-word backward-kill-word-match
 
-# Redefine beginning of line zhszle(1) function.
+# Redefine beginning-of-line zhszle(1) function.
 function beginning-of-buffer { CURSOR=0; }
 zle -N beginning-of-line beginning-of-buffer
 
-# Redefine end of line zhszle(1) function.
+# Redefine end-of-line zhszle(1) function.
 function end-of-buffer { CURSOR=${#BUFFER}; }
 zle -N end-of-line end-of-buffer
 
-# Redefine backward-kill-line function. See zshzle(1).
+# Redefine backward-kill-line zshzle(1) function.
 function backward-kill-buffer {
 	((CURSOR == 0)) && return 1
 	BUFFER="${BUFFER:$CURSOR}"
@@ -102,14 +102,14 @@ function backward-kill-buffer {
 zle -N backward-kill-buffer
 bindkey '^U' backward-kill-buffer
 
-# Redefine backward-delete-char function. See zshzle(1).
+# Redefine backward-delete-char zshzle(1) function.
 function backward-delete-char {
 	((CURSOR == 0)) && return 1
 	zle .backward-delete-char
 }
 zle -N backward-delete-char
 
-# Redefine transpose-chars function. See zshzle(1).
+# Redefine transpose-chars zshzle(1) function.
 function transpose-chars {
 	((CURSOR == 0)) && return 1
 	zle .transpose-chars
