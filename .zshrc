@@ -86,21 +86,21 @@ zstyle ':zle:backward-kill-word' word-style space
 zle -N backward-kill-word backward-kill-word-match
 
 # Redefine beginning of line zhszle(1) function.
-function beginning-of-line { CURSOR=0; }
-zle -N beginning-of-line
+function beginning-of-buffer { CURSOR=0; }
+zle -N beginning-of-line beginning-of-buffer
 
 # Redefine end of line zhszle(1) function.
-function end-of-line { CURSOR=${#BUFFER}; }
-zle -N end-of-line
+function end-of-buffer { CURSOR=${#BUFFER}; }
+zle -N end-of-line end-of-buffer
 
 # Redefine backward-kill-line function. See zshzle(1).
-function backward-kill-line {
+function backward-kill-buffer {
 	((CURSOR == 0)) && return 1
 	BUFFER="${BUFFER:$CURSOR}"
 	CURSOR=0
 }
-zle -N backward-kill-line
-bindkey '^U' backward-kill-line
+zle -N backward-kill-buffer
+bindkey '^U' backward-kill-buffer
 
 # Redefine backward-delete-char function. See zshzle(1).
 function backward-delete-char {
