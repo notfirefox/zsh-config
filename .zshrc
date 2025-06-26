@@ -76,13 +76,9 @@ command ls --color=auto / >/dev/null 2>&1 &&
 [[ -r /etc/zsh_command_not_found ]] &&
 	. /etc/zsh_command_not_found
 
-# Redefine backward-word function. See zshzle(1).
-function backward-word { zle .emacs-backward-word; }
-zle -N backward-word
-
-# Redefine forward-word function. See zshzle(1).
-function forward-word { zle .emacs-forward-word; }
-zle -N forward-word
+# Redefine backward and forward word zshzle(1) functions.
+zle -A emacs-forward-word forward-word
+zle -A emacs-backward-word backward-word
 
 # Redefine backward-kill-word function. See zshzle(1).
 autoload -Uz backward-kill-word-match
