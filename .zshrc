@@ -24,6 +24,7 @@ PROMPT="%F{green}%B%n@%m%b%f:%F{blue}%B%~%b%f%(!.#.$) "
 
 # Set interactive shell options. See zshoptions(1).
 setopt append_history
+setopt bang_hist
 setopt bash_auto_list
 setopt hist_ignore_dups
 setopt hist_ignore_space
