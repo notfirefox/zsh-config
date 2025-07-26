@@ -47,6 +47,9 @@ compinit
 export EDITOR=ed
 export VISUAL=vi
 
+# Disable the prompt for the man(1) command.
+export MANLESS=''
+
 # Adjust path environment variable.
 if [[ $PATH != *"$HOME/.local/bin:"* ]]; then
 	export PATH="$HOME/.local/bin:$PATH"
