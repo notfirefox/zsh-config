@@ -76,6 +76,9 @@ echo | command grep --color=auto "" >/dev/null 2>&1 &&
 command ls --color=auto / >/dev/null 2>&1 &&
 	alias ls='ls --color=auto'
 
+# Some useful aliases. See zshbuiltins(1).
+alias m='$PAGER'
+
 # Create command not found handler. See zshmisc(1).
 [[ -r /etc/zsh_command_not_found ]] &&
 	. /etc/zsh_command_not_found
