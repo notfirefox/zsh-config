@@ -46,6 +46,7 @@ compinit
 # Set IEEE Std 1003.1-2024 compliant environment variables.
 export EDITOR=ed
 export VISUAL=vi
+export PAGER=less
 
 # Disable the prompt for the man(1) command.
 export MANLESS=''
