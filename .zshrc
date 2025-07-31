@@ -43,7 +43,7 @@ fi
 emulate zsh -c 'autoload -Uz compinit'
 compinit
 
-# Set IEEE Std 1003.1-2024 compliant environment variables.
+# Set POSIX.1-2024 compliant environment variables.
 export EDITOR=ed
 export VISUAL=vi
 export PAGER=less
