@@ -48,6 +48,9 @@ export EDITOR=ed
 export VISUAL=vi
 export PAGER=less
 
+# Set options for the less(1) command.
+export LESS=FR
+
 # Disable the prompt for the man(1) command.
 export MANLESS=''
 
