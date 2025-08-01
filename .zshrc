@@ -92,11 +92,11 @@ autoload -Uz backward-kill-word-match
 zstyle ':zle:backward-kill-word' word-style space
 zle -N backward-kill-word backward-kill-word-match
 
-# Redefine beginning-of-line zhszle(1) function.
+# Redefine beginning-of-line zshzle(1) function.
 function beginning-of-buffer { CURSOR=0; }
 zle -N beginning-of-line beginning-of-buffer
 
-# Redefine end-of-line zhszle(1) function.
+# Redefine end-of-line zshzle(1) function.
 function end-of-buffer { CURSOR=${#BUFFER}; }
 zle -N end-of-line end-of-buffer
 
