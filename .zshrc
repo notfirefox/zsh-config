@@ -49,10 +49,10 @@ export VISUAL=vi
 export PAGER=less
 
 # Set options for the less(1) command.
-export LESS=FR
+export LESS=FRX
 
-# Disable the prompt for the man(1) command.
-export MANLESS=''
+# Customize behavior for the man(1) command.
+function man { LESS='' MANLESS='' command man "$@"; }
 
 # Adjust path environment variable.
 if [[ $PATH != *"$HOME/.local/bin:"* ]]; then
